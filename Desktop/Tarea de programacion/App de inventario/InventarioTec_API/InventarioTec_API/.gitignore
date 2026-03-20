@@ -1,0 +1,23 @@
+# --- CARPETAS DE COMPILACIÓN (BASURA) ---
+bin/
+obj/
+[Dd]ebug/
+[Rr]elease/
+
+# --- CONFIGURACIÓN DE VISUAL STUDIO ---
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+# --- ARCHIVOS TEMPORALES Y DEL SISTEMA ---
+.dotnet/
+.cache/
+.vscode/
+Thumbs.db
+desktop.ini
+.DS_Store
+
+# --- OTROS ---
+*.log
