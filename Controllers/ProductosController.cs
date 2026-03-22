@@ -1,40 +1,41 @@
-﻿using InventarioTec_API; 
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using Inventario.Application.Contract; 
+using Inventario.Application.Dtos.Producto; 
 
-namespace InventarioTec_API.Controllers
+namespace Inventario.Api.Controllers
 {
-    [Route("api/[controller]")]
     [ApiController]
+    [Route("api/[controller]")]
     public class ProductosController : ControllerBase
     {
-        private readonly IProductoRepository _repository;
+      
+        private readonly IProductoService _productoService;
 
-   
-        public ProductosController(IProductoRepository repository)
+        public ProductosController(IProductoService productoService)
         {
-            _repository = repository;
+            _productoService = productoService;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Producto>>> Get()
+        public async Task<IActionResult> Get()
         {
-            var productos = await _repository.GetAll();
-            return Ok(productos);
+          
+            var result = await _productoService.ObtenerTodos();
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult<Producto>> Post(ProductoCreateDTO dto)
+        public async Task<IActionResult> Post(ProductoSaveDto dto)
         {
-            var producto = new Producto
-            {
-                Nombre = dto.Nombre,
-                Marca = dto.Marca,
-                Precio = dto.Precio,
-                Stock = dto.Stock
-            };
+          
+            var result = await _productoService.Guardar(dto);
 
-            await _repository.Add(producto);
-            return Ok(producto);
+            if (!result.Success)
+            {
+                return BadRequest(result);
+            }
+
+            return Ok(result);
         }
     }
 }
