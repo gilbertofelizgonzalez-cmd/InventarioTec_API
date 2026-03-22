@@ -1,23 +1,18 @@
-# InventarioTec_API - CRUD Web API
+InventarioTec API - Sistema de Gestión
 
-Este proyecto consiste en una **Web API** desarrollada en **ASP.NET Core 8**, diseñada para gestionar el inventario de una tienda tecnológica. Implementa las operaciones básicas de un CRUD (Create, Read, Update, Delete) utilizando una arquitectura basada en controladores.
-
-Características
-- Arquitectura: Web API con Controllers.
-- Persistencia de datos: Entity Framework Core (LocalDB).
-- Manejo de datos: Implementación de DTOs para la creación de registros.
-- Documentación: Swagger UI habilitado para pruebas de endpoints.
+Este proyecto es una Web API desarrollada con .NET 8 y C# para la gestión de inventarios. Se enfoca en una arquitectura limpia separando la lógica de negocio de la exposición de servicios.
 
 Estructura del Proyecto
-Cumpliendo con los requerimientos de la asignatura, el proyecto se organiza de la siguiente manera:
+El sistema está organizado siguiendo el patrón de arquitectura en capas para facilitar el mantenimiento:
 
-- /Controllers: Gestión de endpoints para la entidad Producto.
-- /Data: Contexto de la base de datos 
-- /DTOs: Objetos de transferencia de datos 
-- /Models: Entidad principal 
-- appsettings.json: Configuración de la cadena de conexión.
+Contract: Definición de interfaces para los servicios de negocio.
+Service: Lógica principal de la aplicación y procesamiento de datos.
+Dtos: Objetos de transferencia de datos con validaciones integradas.
+Controllers: Endpoints de la API documentados con Swagger para pruebas.
+Persistence: Manejo de datos mediante Entity Framework Core y SQL Server.
 
-Cómo ejecutar el proyecto
-1. Clonar el repositorio.
-2. Ejecutar `Update-Database` en la Consola del Administrador de Paquetes para crear la base de datos local.
-3. Presionar F5 o el botón de ejecución en Visual Studio para abrir Swagger.
+ Tecnologías Utilizadas
+Lenguaje: C#
+Framework: ASP.NET Core 8
+ORM: Entity Framework Core
+Documentación: Swagger UI
